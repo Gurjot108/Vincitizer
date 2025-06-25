@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 import os
 import sys
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 # Add root directory to sys.path for stylizer and config imports
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -19,6 +21,18 @@ app = FastAPI(
     title="Vincitizer API",
     description="Fast Neural Style Transfer Backend using PyTorch and Cloudinary",
     version="1.0.0"
+)
+
+# Load from .env
+load_dotenv()
+
+# Allow CORS from your frontend (localhost:3000)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[os.getenv("FRONT_END_URL")],  # or ["*"] for all (use only during development)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Limit file upload size to 5MB

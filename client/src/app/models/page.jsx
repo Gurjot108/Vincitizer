@@ -48,29 +48,30 @@ export default function ModelsPage() {
           {/* Model Cards */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl mx-auto px-4">
             <ModelCard
-              title="Candy"
-              modelName="Candy stylej"
-              image="/thumbs/candy.jpg"
-              onClick={() => console.log("Use candy model")}
-            />
-            <ModelCard
-              title="Starry Night"
-              modelName="Vincet Van Gogh"
-              image="/thumbs/starry.jpg"
-              onClick={() => console.log("Use starrynight model")}
-            />
-            <ModelCard
-              title="Mosaic"
-              modelName="Mosaic Style"
-              image="/thumbs/mosaic.jpg"
-              onClick={() => console.log("Use mosaic model")}
-            />
-            <ModelCard
-              title="Edtaonisl"
-              modelName="Francis Picabia"
-              image="/thumbs/Edta.jpg"
-              onClick={() => console.log("Use edtaonisl model")}
-            />
+  title="Candy"
+  modelFileName="candy.pth"
+  painter="Candy Style"
+  image="/thumbs/candy.jpg"
+/>
+<ModelCard
+  title="Starry Night"
+  modelFileName="starrynight.pth"
+  painter="Vincent van Gogh"
+  image="/thumbs/starry.jpg"
+/>
+<ModelCard
+  title="Mosaic"
+  modelFileName="mosaic.pth"
+  painter="Mosaic Style"
+  image="/thumbs/mosaic.jpg"
+/>
+<ModelCard
+  title="Edtaonisl"
+  modelFileName="edtaonisl.pth"
+  painter="Francis Picabia"
+  image="/thumbs/Edta.jpg"
+/>
+
           </div>
         </motion.div>
       </div>
