@@ -32,7 +32,7 @@ export default function Hero() {
         animate={{ scale: 1.2 }}
         initial={{ scale: 1 }}
         transition={{
-          duration: 30,
+          duration: 25,
           ease: "easeInOut",
           repeat: Infinity,
           repeatType: "reverse",

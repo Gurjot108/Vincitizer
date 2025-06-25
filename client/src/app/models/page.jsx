@@ -18,10 +18,10 @@ export default function ModelsPage() {
       <motion.div
         className="absolute inset-0 bg-fixed bg-cover bg-center scale-110"
         style={{ backgroundImage: "url('/almond.jpg')" }}
-        animate={{ scale: 1.1 }}
+        animate={{ scale: 1.2 }}
         initial={{ scale: 1 }}
         transition={{
-          duration: 20,
+          duration: 25,
           ease: "easeInOut",
           repeat: Infinity,
           repeatType: "reverse",

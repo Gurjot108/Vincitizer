@@ -13,7 +13,7 @@ export default function ResultView({ originalUrl, stylizedUrl }) {
             src={originalUrl}
             alt="Original Image"
             fill
-            
+            onContextMenu={(e) => e.preventDefault()}
             unoptimized
             className="object-contain"
           />
@@ -28,6 +28,7 @@ export default function ResultView({ originalUrl, stylizedUrl }) {
             src={stylizedUrl}
             alt="Stylized Image"
             fill
+            onContextMenu={(e) => e.preventDefault()}
             unoptimized
             className="object-contain"
           />
