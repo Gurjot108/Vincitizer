@@ -6,12 +6,6 @@ Vincitizer is a full-stack deep learning web application that applies real-time 
 
 ---
 
-## 📸 Demo
-
-[Live Demo (optional ngrok or hosted link)](https://vincitizer.vercel.app)
-
----
-
 ## 🧠 Features
 
 - 🎨 Real-time neural style transfer using custom PyTorch models
