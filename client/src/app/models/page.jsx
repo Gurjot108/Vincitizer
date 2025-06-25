@@ -69,7 +69,7 @@ export default function ModelsPage() {
   title="Edtaonisl"
   modelFileName="edtaonisl.pth"
   painter="Francis Picabia"
-  image="/thumbs/Edta.jpg"
+  image="/thumbs/edta.jpg"
 />
 
           </div>
