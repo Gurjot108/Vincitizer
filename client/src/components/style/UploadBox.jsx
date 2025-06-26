@@ -1,33 +1,16 @@
 "use client";
 
 import { useState, useRef } from "react";
-import imageCompression from "browser-image-compression";
 
 export default function UploadBox({ onFileSelect }) {
   const [preview, setPreview] = useState(null);
   const inputRef = useRef();
 
-  const compressAndSet = async (file) => {
-    const options = {
-      maxSizeMB: 1,
-      maxWidthOrHeight: 768,
-      useWebWorker: true,
-    };
-
-    try {
-      const compressedFile = await imageCompression(file, options);
-      const previewURL = URL.createObjectURL(compressedFile);
-      setPreview(previewURL);
-      onFileSelect(compressedFile); // Pass compressed file to parent
-    } catch (err) {
-      console.error("Image compression failed:", err);
-    }
-  };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
-      compressAndSet(file);
+      setPreview(URL.createObjectURL(file));
+      onFileSelect(file);
     }
   };
 
@@ -35,7 +18,8 @@ export default function UploadBox({ onFileSelect }) {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith("image/")) {
-      compressAndSet(file);
+      setPreview(URL.createObjectURL(file));
+      onFileSelect(file);
     }
   };
 

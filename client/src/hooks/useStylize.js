@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import imageCompression from "browser-image-compression";
 
 export default function useStylize() {
   const [originalUrl, setOriginalUrl] = useState(null);
@@ -18,9 +19,26 @@ export default function useStylize() {
     setMeta(null);
 
     try {
+      // Compression options with 760px max dimension
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 768,
+        useWebWorker: true,
+        fileType: file.type, // Preserve original file type
+      };
+
+      // Compress the image
+      const compressedFile = await imageCompression(file, options);
+
+      // Create a new File object with the original name to preserve extension
+      const finalFile = new File([compressedFile], file.name, {
+        type: file.type,
+        lastModified: Date.now(),
+      });
+
       const formData = new FormData();
-      formData.append("content_image", file); // ✅ MATCH FastAPI param
-      formData.append("model_name", modelName); // ✅ MATCH FastAPI param
+      formData.append("content_image", finalFile); // Use the properly named file
+      formData.append("model_name", modelName);
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/stylize`,
@@ -36,7 +54,7 @@ export default function useStylize() {
       setOriginalUrl(data.original_url);
       setStylizedUrl(data.stylized_url);
       setMeta({
-        model: data.model_used, // ✅ match the backend response field
+        model: data.model_used,
         inference_time: data.inference_time_sec,
       });
     } catch (err) {
