@@ -29,7 +29,7 @@ load_dotenv()
 # Allow CORS from your frontend (localhost:3000)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://vincitizer.vercel.app"],  # or ["*"] for all (use only during development)
+    allow_origins=["*"],  # or ["*"] for all (use only during development)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
